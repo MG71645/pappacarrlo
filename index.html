@@ -1,0 +1,689 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Pappa Carrlo</title>
+        <meta name="description" content="Кухни с индивидуальным дизайном под ключ в Астане">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+        <link rel="stylesheet" href="css/normalize.min.css">
+        <link rel="stylesheet" href="css/mg.css">
+        <link rel="stylesheet" href="css/icons.css">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/mobile.css">
+        <link rel="stylesheet" href="css/animation.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+        <!--script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script-->
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+        
+        <link rel="stylesheet" href="fancybox/source/jquery.fancybox.css?v=2.1.5" type="text/css" media="screen"/>
+        <script type="text/javascript" src="fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+        <!-- Optionally add helpers - button, thumbnail and/or media -->
+        <link rel="stylesheet" href="fancybox/source/helpers/jquery.fancybox-buttons.css?v=1.0.5" type="text/css" media="screen" />
+        <script type="text/javascript" src="fancybox/source/helpers/jquery.fancybox-buttons.js?v=1.0.5"></script>
+        <script type="text/javascript" src="fancybox/source/helpers/jquery.fancybox-media.js?v=1.0.6"></script>
+
+        <link rel="stylesheet" href="fancybox/source/helpers/jquery.fancybox-thumbs.css?v=1.0.7" type="text/css" media="screen" />
+        <script type="text/javascript" src="fancybox/source/helpers/jquery.fancybox-thumbs.js?v=1.0.7"></script>
+
+        <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+        
+		<script src="js/referer.js"></script>
+        
+        <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.js"></script>
+        <script>
+            $().ready(function() {
+                $('form').each(function() {
+                    $(this).validate({
+                        rules: {
+                            name: {
+                                required: true,
+                                minlength: 2
+                            },
+                            phone: {
+                                required: true,
+                                minlength: 6
+                            },
+                            email: {
+                                required: true,
+                                email: true
+                            }
+                        },
+                        messages: {
+                            name: {
+                                required: "Заполните имя",
+                                minlength: "Имя должно содержать минимум 2 символа"
+                            },
+                            phone: {
+                                required: "Заполните телефон",
+                                minlength: "Слишком короткий телефон"
+                            },
+                            email: {
+                                required: "Заполните email",
+                                email: "Введите правильный email"
+                            }
+                        }
+                    });
+                });
+            });
+        </script>
+        
+        <script>
+            function popup(id, trigger) {
+                $('popup input[name="trigger"]').val(trigger);
+                $('fade').removeClass('hidden');
+                $(id).removeClass('hidden');
+                setTimeout( function() {
+                    $('fade').addClass('show');
+                    $(id).addClass('show');
+                    $('popup input[name="name"]').focus();
+                }, 1 );
+            }
+            function popdown() {
+                $('fade').addClass('hidden').removeClass('show');
+                $('popup').each( function() {
+                    $(this).addClass('hidden').removeClass('show');
+                });
+            }
+        </script>
+        <script>
+            function scrollTo(elem) {
+                if(document.getElementById(elem)) {
+                    var destination = jQuery('#'+elem).offset().top-69;
+                    jQuery("html,body").animate({scrollTop: destination}, 800);
+                }
+            }
+        </script>
+        <script>
+            function AjaxGetCallback(formMain,url) {
+                if ( $('#send_phone').hasClass('used') ) {
+                    popdown();
+                } else {
+                    $('#popup_main_cta').prop('disabled', true);
+                    $('#popup_main_cta').prop('value', 'Отправка');
+                    jQuery.ajax({
+                        url: url,
+                        type: "POST",
+                        dataType: "html",
+                        data: jQuery("#"+formMain).serialize(),
+                        success: function(response) {
+                            //document.getElementById(result_id).innerHTML = response;
+                            // отправка в гугл аналитикс о достигнутой цели
+                            ga('send', 'event', 'request','form')
+                            setTimeout( function() {
+                                $('#slide-01').addClass('previous');
+                                $('#slide-02').removeClass('next');
+                            }, 1000 );
+                        },
+                        error: function(response) {
+                            //document.getElementById(result_id).innerHTML = "Возникла ошибка при отправке формы. Попробуйте еще раз";
+                            $('#popup_main_cta').prop('value', 'Ошибка');
+                            setTimeout( function() {
+                                $('#popup_main_cta').prop('disabled', false);
+                                $('#popup_main_cta').prop('value', 'Отправить');
+                            }, 1000 );
+                        }
+                    });
+                }
+            }
+            function AjaxGetInfo(formMain,url,buttonId) {
+                var button = document.getElementById(buttonId);
+                button.disabled = true;
+                button.value = 'Отправка';
+                jQuery.ajax({
+                    url: url,
+                    type: "POST",
+                    dataType: "html",
+                    data: jQuery("#"+formMain).serialize(),
+                    success: function(response) {
+                        //document.getElementById(result_id).innerHTML = response;
+                        setTimeout( function() {
+                            button.value = 'Готово!';
+                        }, 1000 );
+                    },
+                    error: function(response) {
+                        //document.getElementById(result_id).innerHTML = "Возникла ошибка при отправке формы. Попробуйте еще раз";
+                        setTimeout( function() {
+                            button.value = 'Ошибка';
+                        }, 1000 );
+                    }
+                });
+            }
+        </script>
+    </head>
+    <body>
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        
+        <main>
+            <section id="header" class="mobile-hidden">
+                <wrapper>
+                    <column class="column-3">
+                        <div id="logo-bg" class="smooth">
+                            <logo onclick="scrollTo('main')"></logo>
+                        </div>
+                    </column><column class="column-6 text-center">
+                        <nav>
+                            <a onclick="scrollTo('works')">Наши Работы</a>
+                            <a onclick="scrollTo('comments')">Отзывы</a>
+                            <a onclick="scrollTo('certificates')">Сертификаты</a>
+                        </nav>
+                    </column><column id="phones" class="column-3 text-right middle">
+                        <i class="fa fa-phone"></i>
+                        <a href="tel: +77172371041">+7 (7172) 37-10-41</a>
+                        <a href="tel: +77071105517">+7 (707) 110-55-17</a><br>
+                        <a href="#" onclick="popup(popup_main, 'Бесплатная консультация в начале')" class="cta">Бесплатная консультация</a>
+                    </column>
+                </wrapper>
+            </section>
+            
+            <section id="header-mobile" class="text-center mobile-only">
+                    <column class="column-1">
+                        <logo></logo>
+                    </column><column id="phones" class="column-3 text-right middle">
+                        <i class="fa fa-phone"></i>
+                        <a href="tel: +77172371041">+7 (7172) 37-10-41</a>
+                        <a href="tel: +77071105517">+7 (707) 110-55-17</a><br>
+                        <a href="#" onclick="popup(popup_main, 'Бесплатная консультация в начале')" class="cta">Бесплатная консультация</a>
+                    </column>
+                    <column class="column-6 text-center">
+                        <nav>
+                            <a onclick="scrollTo('works')">Наши Работы</a>
+                            <a onclick="scrollTo('comments')">Отзывы</a>
+                            <a onclick="scrollTo('certificates')">Сертификаты</a>
+                        </nav>
+                    </column>
+            </section>
+            
+            <section id="main" class="border-bottom">
+                <wrapper class="text-center">
+                    <!--h1><span>К</span>ухни с <span>И</span>ндивидуальным <span>Д</span>изайном</h1>
+                    <h2><span>П</span>од <span>К</span>люч в <span>А</span>стане</h2-->
+                    <div id="h1" class="mobile-hidden"></div>
+                    <div id="h1-mobile" class="mobile-only"></div>
+                    <div id="offer-main" class="animated from-bottom">
+                        <button id="main-cta" class="cta" onclick="popup(popup_main, 'Главная страница')">Оставить Заявку</button>
+                    </div>
+                </wrapper>
+                <img id="hand" src="img/hand.png" class="mobile-hidden">
+            </section>
+            
+            <section id="badges" class="">
+                <wrapper>
+                    <column class="column-3 text-center animated from-bottom">
+                        <img src="img/badge/01.png">
+                        <h5>
+                            <span>С</span>обственное<br>
+                            <span>П</span>роизводство
+                        </h5>
+                    </column><column class="column-3 text-center animated from-bottom">
+                        <img src="img/badge/02.png">
+                        <h5>
+                            <span>У</span>никальный<br>
+                            <span>Д</span>изайн
+                        </h5>
+                    </column><column class="column-3 text-center animated from-bottom">
+                        <img src="img/badge/03.png">
+                        <h5>
+                            <span>П</span>окупка<br>
+                            в <span>Р</span>ассрочку
+                        </h5>
+                    </column><column class="column-3 text-center animated from-bottom">
+                        <img src="img/badge/04.png">
+                        <h5>
+                            <span>Г</span>арантия<br>
+                            до 7 лет
+                        </h5>
+                    </column>
+                </wrapper>
+            </section>
+            
+            <section id="pros" class="hidden">
+                <wrapper>
+                
+                </wrapper>
+            </section>
+            
+            <section id="works" class="">
+                <wrapper class="text-center">
+                    <h4 class="animated"><span>Ч</span>то мы можем?</h4>
+                    <h3 class="animated"><span>Н</span>аши <span>Р</span>аботы</h3>
+                </wrapper>
+                <wrapper>
+                    <column class="column-6 animated from-bottom">
+                        <margin>
+                            <a class="fancybox" rel="works" href="img/works/01.jpg">
+                                <div id="work-01" class="work">
+                                    <h2><span>К</span>лассическая <span>К</span>ухня из <span>МДФ</span></h2>
+                                </div>
+                            </a>
+                        </margin>
+                    </column><column class="column-6 animated from-bottom">
+                        <margin>
+                            <a class="fancybox" rel="works" href="img/works/02.jpg">
+                                <div id="work-02" class="work">
+                                    <h2><span>К</span>лассическая <span>К</span>ухня из <span>МДФ</span></h2>
+                                </div>
+                            </a>
+                        </margin>
+                    </column><column class="column-6 animated from-bottom">
+                        <margin>
+                            <a class="fancybox" rel="works" href="img/works/03.jpg">
+                                <div id="work-03" class="work">
+                                    <h2><span>М</span>одерн <span>К</span>ухня из <span>МДФ</span></h2>
+                                </div>
+                            </a>
+                        </margin>
+                    </column><column class="column-6 animated from-bottom">
+                        <margin>
+                            <a class="fancybox" rel="works" href="img/works/04.jpg">
+                                <div id="work-04" class="work">
+                                    <h2><span>М</span>одерн <span>К</span>ухня из <span>МДФ</span></h2>
+                                </div>
+                            </a>
+                        </margin>
+                    </column>
+                </wrapper>
+            </section>
+            
+            <section id="offer-credit" class="dark border-top border-bottom">
+                <wrapper class="text-center">
+                    <h2 class="animated">
+                        <strong><span>У</span> нас просто оформить рассрочку</strong>
+                    </h2>
+                    <p class="animated">Оставьте заявку и получите выгодные условия оплаты</p>
+                    <column class="column-12 text-center animated">
+                        <button id="offer-credit-cta" onclick="popup(popup_main, 'Рассрочка или кредит')">Оставить заявку</button>
+                    </column>
+                </wrapper>
+            </section>
+            
+            <section id="plan" class="">
+                <wrapper class="text-center">
+                    <h4 class="animated"><span>К</span>ак мы работаем?</h4>
+                    <h3 class="animated"><span>С</span>хема <span>Р</span>аботы</h3>
+                </wrapper>
+                
+                <wrapper>
+                    <column class="column-3 text-center animated from-bottom">
+                        <margin>
+                            <img src="img/badge/05.png">
+                            <p>Вы оставляете заявку на сайте или звоните нам</p>
+                            <button id="plan-cta" class="cta" onclick="popup(popup_main, 'Схема работы')">Оставить заявку</button>
+                        </margin>
+                    </column><column class="column-3 text-center animated from-bottom">
+                        <margin>
+                            <img src="img/badge/06.png">
+                            <p>Выезд специалиста: Консультация, Замер, Подбор материала и стиля</p>
+                        </margin>
+                    </column><column class="column-3 text-center animated from-bottom">
+                        <margin>
+                            <img src="img/badge/07.png">
+                            <p>Изготовление мебели</p>
+                        </margin>
+                    </column><column class="column-3 text-center animated from-bottom">
+                        <margin>
+                            <img src="img/badge/08.png">
+                            <p>Доставка и установка</p>
+                        </margin>
+                    </column>
+                </wrapper>
+            </section>
+            
+            <!--section id="letters" class="">
+                <wrapper class="text-center">
+                    <h4 class="animated"><span>Ч</span>то о нас говорят?</h4>
+                    <h3 class="animated"><span>О</span>тзывы <span>К</span>лиентов</h3>
+                </wrapper>
+                <wrapper id="letter-01" class="text-center">
+                    <column class="column-8 text-center">
+                        <column class="column-2 animated">
+                            <img src="img/comment/ramstor.jpg" width="100%">
+                        </column>
+                        <div class="comment text-justify animated from-bottom">
+                            <p>Товаришество с ограниченной ответственностью "Рамстор", в лице директора супермаркета Кенжебаева Н, А, выражает благодарность коллективу "Pappa Carrlo" за многолетнее сотрудничество, своевремнность, оперативность, ответственность при выполнении изготовлении офисной мебели. Выражаем свою благодарность за комфорт.</p>
+                        </div>
+                    </column>
+                </wrapper>
+                <wrapper id="letter-02" class="text-center">
+                    <column class="column-8 text-center">
+                        <column class="column-1 animated">
+                            <img src="img/comment/efes.png" width="100%">
+                        </column>
+                        <div class="comment text-justify animated from-bottom">
+                            <p>Благодари коллектив "Pappa Carrlo" за взаимовыгодное сотрудничество и добропорядочные партнерские отношения, проявленные при изготовлении офисной мебели. Надеемся и в будущем на Вашу надежность и высокий профессионализм.</p>
+                        </div>
+                    </column>
+                </wrapper>
+                <wrapper id="letter-03" class="text-center">
+                    <column class="column-8 text-center">
+                        <column class="column-2 animated">
+                            <img src="img/comment/mechta.jpg" width="100%">
+                        </column>
+                        <div class="comment text-justify animated from-bottom">
+                            <p>Мы высоко ценим проделанную работу с Вашей компанией, стремимся к удовлетворению наших потребностей в комфорте и красоте. Мы хорошо осознаем, что своими успехами обязаны, прежде всего, успешному сотрудничеству с Вами.</p>
+                        </div>
+                    </column>
+                </wrapper>
+            </section-->
+            
+            <section id="comments" class="">
+                <wrapper class="text-center">
+                    <h4 class="animated"><span>Ч</span>то о нас говорят?</h4>
+                    <h3 class="animated"><span>О</span>тзывы <span>К</span>лиентов</h3>
+                </wrapper>
+                <wrapper id="comment-01" class="text-center">
+                    <column class="column-8 text-left">
+                        <div class="avatar animated"></div>
+                        <div class="info animated">
+                            Алия<br>
+                            <span>Алиева</span>
+                        </div>
+                        <div class="comment text-justify animated from-bottom">
+                            <p>
+                                Сделали свой выбор, заказали кухонную мебель в компании «Pappa Carrlo».
+                                Рады, что не ошиблись и остались очень довольны.
+                                Всё выполнено в срок, впечатления только положительные.
+                                Все сотрудники компании выполняют свою работу на отлично.
+                                Замеры, интерьерное решение, изготовление, доставка, сборка — всё на высшем уровне!
+                            </p>
+                            <div class="photo"></div>
+                        </div>
+                    </column>
+                </wrapper>
+                <wrapper id="comment-02" class="text-center">
+                    <column class="column-8 text-left">
+                        <div class="avatar animated"></div>
+                        <div class="info animated">
+                            Динара<br>
+                            <span>Тлеубаева</span>
+                        </div>
+                        <div class="comment text-justify animated from-bottom">
+                            <p>
+                                В декабре я заказывала кухню и гардероб в квартиру! Цена не завышена, соответствует качеству.
+                                Бригада сборщиков аккуратная, опытная. Спасибо всему коллективу за их хорошую работу!
+                                Приятно, когда воплощают в жизнь твои надежды! Могу смело рекомендовать!
+                            </p>
+                            <div class="photo"></div>
+                        </div>
+                    </column>
+                </wrapper>
+                <wrapper id="comment-03" class="text-center">
+                    <column class="column-8 text-left">
+                        <div class="avatar animated"></div>
+                        <div class="info animated">
+                            Айжан<br>
+                            <span>Омарова</span>
+                        </div>
+                        <div class="comment text-justify animated from-bottom">
+                            <p>
+                                Нам установили нашу кухоньку. Всё безумно нравится. Никаких претензий, аккуратно,
+                                дизайнер все продумала, посоветовала и воплотила кое-какие наши мечты.
+                                Не пожалели ни на минуту в выборе фирмы, хотя превысило сумму которую хотели потратить,
+                                но зато радует нас своим качеством и удобством. Спасибо огромное, наши ожидания оправдались!!!!
+                                Дальнейшего вам процветания, до новых встреч !!!!
+                            </p>
+                            <div class="photo"></div>
+                        </div>
+                    </column>
+                </wrapper>
+            </section>
+            
+            <section id="offer-wedding" class="dark border-top border-bottom">
+                <wrapper>
+                    <column class="column-8 text-center">
+                        <h2 class="animated">
+                            <strong>
+                                <span>Н</span>овоселам и <span>Н</span>овобрачным<br>
+                                <span>Ч</span>естная <span>С</span>кидка 10%
+                            </strong>
+                        </h2>
+                        <p class="animated">Оставьте заявку и получите выгодные условия скидки</p>
+                        <column class="column-8 text-center animated">
+                            <button id="offer-credit-cta" onclick="popup(popup_main, 'Новоселам и новобрачным')">Оставить заявку</button>
+                        </column>
+                    </column>
+                    <img class="right animated from-right mobile-hidden" src="img/offer-wedding.png">
+                </wrapper>
+            </section>
+            
+            <section id="certificates" class="">
+                <wrapper class="text-center">
+                    <h4 class="animated"><span>В</span>сё ещё сомневаетесь?</h4>
+                    <h3 class="animated"><span>Н</span>аши <span>С</span>ертификаты</h3>
+                </wrapper>
+                <wrapper>
+                    <column class="column-4 text-center animated from-bottom">
+                        <!--a class="fancybox" rel="gallery1" href="img/certificate/01.png"-->
+                        <img src="img/certificate/01.png">
+                        <!--/a-->
+                    </column><column class="column-4 text-center animated from-bottom">
+                        <!--a class="fancybox" rel="gallery1" href="img/certificate/01.png"-->
+                        <img src="img/certificate/02.png">
+                        <!--/a-->
+                    </column><column class="column-4 text-center animated from-bottom">
+                        <!--a class="fancybox" rel="gallery1" href="img/certificate/01.png"-->
+                        <img src="img/certificate/03.png">
+                        <!--/a-->
+                    </column>
+                </wrapper>
+                <!--wrapper class="text-center">
+                    <column class="column-6 animated">
+                        <p>
+                            При производстве вашей кухни мы используем новейшее оборудование.<br>
+                            Изготовление проходит в соответствии с высокими государственными стандартами качества Республики Казахстан.
+                        </p>
+                    </column>
+                </wrapper-->
+            </section>
+            
+            <!--section id="tradein" class="dark border-top border-bottom">
+                <wrapper class="text-center">
+                    <h2 class="animated"><span>М</span>ебельный <span>T</span>rade<span>I</span>n</h2>
+                    <column class="column-3 text-center animated from-bottom">
+                        <margin>
+                            <img src="img/icon/01.png">
+                            <h5><span>Э</span>кономия <span>Д</span>енег</h5>
+                            <p>Получите скидку на новый комлект мебели в размере стоимости старого комплекта.</p>
+                        </margin>
+                    </column><column class="column-3 text-center animated from-bottom">
+                        <margin>
+                            <img src="img/icon/02.png">
+                            <h5><span>Н</span>икаких <span>З</span>абот</h5>
+                            <p>
+                                Мы вывезем старую<br>
+                                и доставим новую мебель<br>
+                                за наш счет.
+                            </p>
+                        </margin>
+                    </column><column class="column-3 text-center animated from-bottom">
+                        <margin>
+                            <img src="img/icon/03.png">
+                            <h5><span>П</span>риятный <span>Б</span>онус</h5>
+                            <p>Вы получите новый дизайн, замер и сборку абсолютно бесплатно!</p>
+                        </margin>
+                    </column><column class="column-3 text-center animated from-bottom">
+                        <margin>
+                            <img src="img/icon/01.png">
+                            <h5><span>Э</span>кономия <span>В</span>ремени</h5>
+                            <p>Это займет не более 4 часов, тогда как на самостоятельную реализацию тратятся месяцы.</p>
+                        </margin>
+                    </column>
+                </wrapper>
+                <wrapper>
+                    <column class="column-12 text-center animated from-bottom">
+                        <button id="tradein-cta" onclick="popup(popup_main, 'Мебельный TradeIn')">Участвовать в акции</button>
+                    </column>
+                </wrapper>
+            </section-->
+            
+            <section id="clients" class="">
+                <wrapper class="text-center">
+                    <h4 class="animated"><span>С</span> кем мы работаем?</h4>
+                    <h3 class="animated"><span>Н</span>аши <span>К</span>лиенты</h3>
+                </wrapper>
+                <wrapper>
+                    <column class="column-3 animated">
+                        <div id="client-01" class="client"></div>
+                    </column><column class="column-3 animated">
+                        <div id="client-02" class="client"></div>
+                    </column><column class="column-3 animated">
+                        <div id="client-03" class="client"></div>
+                    </column><column class="column-3 animated">
+                        <div id="client-04" class="client"></div>
+                    </column><column class="column-3 animated">
+                        <div id="client-05" class="client"></div>
+                    </column><column class="column-3 animated">
+                        <div id="client-06" class="client"></div>
+                    </column><column class="column-3 animated">
+                        <div id="client-07" class="client"></div>
+                    </column><column class="column-3 animated">
+                        <div id="client-08" class="client"></div>
+                    </column>
+                </wrapper>
+            </section>
+            
+            <section id="map" class="hidden">
+                <script type="text/javascript" charset="utf-8" src="https://api-maps.yandex.ru/services/constructor/1.0/js/?sid=bOUu6DhbmzfaqUcdVVgxwSSAnxx_GvdY&width=100%&height=500&lang=ru_RU&sourceType=constructor"></script>
+            </section>
+            
+            <section id="footer" class="border-top">
+                <wrapper>
+                    <column class="column-4 middle navigation">
+                        <margin>
+                            <small>
+                                <a onclick="scrollTo('main')">Главная</a>
+                                <a onclick="scrollTo('works')">Наши работы</a>
+                                <a onclick="scrollTo('plan')">Схема работы</a>
+                                <a onclick="scrollTo('letters')">Отзывы клиентов</a>
+                                <a onclick="scrollTo('certificates')">Наши сертификаты</a>
+                            </small>
+                        </margin>
+                    </column><column class="column-4 text-center middle">
+                        <margin>
+                            <logo></logo>
+                            <small>
+                                © 2015. Pappa Carrlo<br>
+                                <a href="politics.pdf">Политика конфиденциальности</a>
+                            </small>
+                        </margin>
+                    </column><column class="column-4 middle">
+                        <margin>
+                            <icon class="icon-phone"></icon>
+                            <column class="column-3">
+                                +7 (7172) 37-10-41<br>
+                                +7 (707) 110-55-17<br>
+                                <a onclick="popup(popup_main, 'Обратный звонок в конце')" class="cta">Заказать обратный звонок</a>
+                            </column>
+                            <br>
+                            <br>
+                            <icon class="icon-map-marker"></icon>
+                            <column class="column-3">
+                                Республика Казахстан, г. Астана<br>
+                                ул. Брусиловского, 1а<br>
+                                <a href="https://maps.yandex.ru/-/CVwKnCIE" target="_blank" class="">Показать на карте</a>
+                            </column>
+                            <br>
+                            <br>
+                            <icon class="icon-email"></icon>
+                            <column class="column-3">
+                                info@pappa-carrlo.kz
+                                <a href="mailto: info@pappa-carrlo.kz" class="">Отправить письмо</a>
+                            </column>
+                        </margin>
+                    </column>
+                </wrapper>
+            </section>
+        </main>
+        
+        <fade class="hidden" onclick="popdown()"></fade>
+        
+        <popup id="popup_main" class="hidden">
+            <column class="column-4">
+            </column><column class="column-4">
+                <slider>
+                    <slide id="slide-01">
+                        <margin>
+                            <h2 class="text-center"><span>В</span>ведите <span>Т</span>елефон</h2>
+                            <p class="text-center">Оставьте Ваш телефон и мы перезвоним Вам в рабочее время</p>
+                            <form id="popup_main_form">
+                                <mg-input icon="account">
+                                    <input type="text" name="name" placeholder="Имя:">
+                                </mg-input>
+                                <mg-input icon="phone">
+                                    <input type="tel" name="phone" placeholder="Телефон:">
+                                </mg-input>
+                                <input type="hidden" name="trigger">
+                                <input type="button" id="popup_main_cta" onclick="AjaxGetCallback('popup_main_form', 'swift.php')" value="Отправить">
+                            </form>
+                        </margin>
+                    </slide>
+                    <slide id="slide-02" class="next">
+                        <margin class="text-center">
+                            <h2>Спасибо!</h2>
+                            <p>Оператор свяжется с Вами в течение 30 минут</p>
+                            <input type="button" class="cta" onclick="popdown()" value="Готово">
+                        </margin>
+                    </slide>
+                </slider>
+            </column>
+            <!--icon class="icon-close" onclick="popdown()"></icon-->
+            <i class="fa fa-times" onclick="popdown()"></i>
+        </popup>
+
+        <script src="js/main.js"></script>
+        <script src="js/animate.js"></script>
+      
+      
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+          ga('create', 'UA-69140721-1', 'auto');
+          ga('send', 'pageview');
+
+        </script>
+        
+        <!-- Yandex.Metrika counter -->
+        <!--script type="text/javascript">
+            (function (d, w, c) {
+                (w[c] = w[c] || []).push(function() {
+                    try {
+                        w.yaCounter32769805 = new Ya.Metrika({
+                            id:32769805,
+                            clickmap:true,
+                            trackLinks:true,
+                            accurateTrackBounce:true,
+                            webvisor:true
+                        });
+                    } catch(e) { }
+                });
+
+                var n = d.getElementsByTagName("script")[0],
+                    s = d.createElement("script"),
+                    f = function () { n.parentNode.insertBefore(s, n); };
+                s.type = "text/javascript";
+                s.async = true;
+                s.src = "https://mc.yandex.ru/metrika/watch.js";
+
+                if (w.opera == "[object Opera]") {
+                    d.addEventListener("DOMContentLoaded", f, false);
+                } else { f(); }
+            })(document, window, "yandex_metrika_callbacks");
+        </script>
+        <noscript><div><img src="https://mc.yandex.ru/watch/32769805" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+        <!-- /Yandex.Metrika counter -->
+        
+    </body>
+</html>

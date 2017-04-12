@@ -1,0 +1,300 @@
+@font-face {
+    font-family: "Roboto";
+    src: url("../fonts/Roboto-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Roboto";
+    src: url("../fonts/Roboto-Bold.ttf") format("truetype");
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Roboto";
+    src: url("../fonts/Roboto-Light.ttf") format("truetype");
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Trajan";
+    src: url("../fonts/Trajan-Regular.otf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Trajan";
+    src: url("../fonts/Trajan-Bold.otf") format("truetype");
+    font-weight: 700;
+    font-style: normal;
+}
+
+html {
+    font-family: "Roboto", sans-serif;
+    overflow-x: hidden;
+    font-size: 16px;
+    line-height: 1.4;
+    font-weight: 400;
+}
+
+button {
+    padding: 16px 32px;
+    background: #ffffff; /* Old browsers */
+    background: -moz-linear-gradient(top,  #ffffff 0%, #bdbdbd 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#bdbdbd)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #ffffff 0%,#bdbdbd 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #ffffff 0%,#bdbdbd 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #ffffff 0%,#bdbdbd 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  #ffffff 0%,#bdbdbd 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#bdbdbd',GradientType=0 ); /* IE6-9 */
+    border-radius: 8px;
+    border: 1px solid white;
+    font-family: "Book Antiqua", sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 14px;
+    color: #3D2622;
+    text-shadow: 0 1px 1px white;
+}
+
+button.cta {
+    background: #e57373; /* Old browsers */
+    background: -moz-linear-gradient(top,  #e57373 0%, #b71c1c 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#e57373), color-stop(100%,#b71c1c)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #e57373 0%,#b71c1c 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #e57373 0%,#b71c1c 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #e57373 0%,#b71c1c 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  #e57373 0%,#b71c1c 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e57373', endColorstr='#b71c1c',GradientType=0 ); /* IE6-9 */
+    border: 1px solid #F34235;
+    color: white;
+    text-shadow: 0 -1px 0 rgba(0,0,0, 0.50);
+} .dark button.cta {
+    background: white;
+    border: none;
+    color: #0C46A0;
+}
+
+a {
+    padding: 0;
+    text-decoration: none;
+}
+
+a.cta {
+    text-decoration: underline;
+    color: #BB2522;
+} #main a.cta {
+    font-size: 12px;
+}
+
+h1 {
+    margin: 0;
+    font-family: "Trajan", serif;
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 36px;
+    color: #3D2622;
+    text-shadow: 8px 8px 16px white, -8px 8px 16px white, -8px -8px 16px white, 8px -8px 16px white, 0 0 8px white;
+    vertical-align: bottom;
+} h1 span {
+    font-size: 36px;
+    vertical-align: bottom;
+}
+
+h2 {
+    font-family: "Trajan", serif;
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    color: #3D2622;
+    text-shadow: 8px 8px 16px white, -8px 8px 16px white, -8px -8px 16px white, 8px -8px 16px white, 0 0 8px white;
+} h2 span {
+    font-size: 24px;
+} .dark h2 {
+    color: white;
+    text-shadow: 0 2px 3px rgba(0,0,0, 0.75);
+}
+
+h3 {
+    position: relative;
+    margin: 0;
+    font-family: "Trajan", serif;
+    text-transform: uppercase;
+    font-size: 28px;
+    line-height: 36px;
+    color: #3D2622;
+    text-shadow: 0 0 64px white, 0 0 64px white, 0 0 64px white, 0 0 64px white, 0 0 64px white, 0 0 64px white, 0 0 64px white, 0 0 64px white, 0 0 64px white;
+    vertical-align: bottom;
+} h3 span {
+    font-size: 36px;
+    vertical-align: bottom;
+} h4 + h3:before {
+    content: "";
+    position: absolute;
+    top: -160px;
+    left: 50%;
+    height: 105px;
+    width: 158px;
+    background: url("../img/sawdust.png") center center no-repeat;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
+}
+
+h4 {
+    display: inline-block;
+    position: relative;
+    margin: 0;
+    margin-top: 64px;
+    font-family: "Trajan", serif;
+    font-size: 18px;
+    line-height: 36px;
+    color: #A0877E;
+} h4 span {
+    font-size: 21px;
+} h4:before {
+    content: "";
+    position: absolute;
+    top: 16px;
+    left: -48px;
+    height: 1px;
+    width: 32px;
+    background: #A0877E;
+} h4:after {
+    content: "";
+    position: absolute;
+    top: 16px;
+    right: -48px;
+    height: 1px;
+    width: 32px;
+    background: #A0877E;
+}
+
+h5 {
+    margin: 0;
+    font-family: "Trajan", serif;
+    font-size: 14px;
+    line-height: 20px;
+} h5 span {
+    font-size: 16px;
+}
+
+h6 {
+    font-family: "Trajan", serif;
+}
+
+ul {
+    margin: 0;
+    padding: 0px 16px 0px 48px;
+}
+
+li {
+    list-style: none;
+    position: relative;
+    margin: 32px 0;
+} li:before {
+    content: "";
+    position: absolute;
+    top: 8px;
+    left: -24px;
+    height: 8px;
+    width: 8px;
+    background: #0C46A0;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+} li:first-child {
+    margin-top: 0;
+} li:last-child {
+    margin-bottom: 0;
+}
+
+.dark p {
+    font-weight: 300;
+    color: white;
+    text-shadow: 0 2px 3px rgba(0,0,0, 0.75);
+}
+
+
+
+
+
+small {
+    font-size: 12px;
+}
+
+popup {
+    border-radius: 0;
+}
+
+popup h2 {
+    margin-top: 16px;
+    color: #3D2622;
+    text-shadow: none;
+}
+
+popup p {
+    font-weight: 300;
+    font-size: 16px;
+}
+
+popup column:first-of-type {
+    background: url("../img/form.jpg") center left no-repeat;
+    background-size: cover;
+}
+
+popup column:nth-of-type(2) {
+    background: #FFDFB1;
+}
+
+popup input {
+    border-radius: 8px;
+}
+
+popup input[type="button"] {
+    background: #e57373; /* Old browsers */
+    background: -moz-linear-gradient(top,  #e57373 0%, #b71c1c 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#e57373), color-stop(100%,#b71c1c)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #e57373 0%,#b71c1c 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #e57373 0%,#b71c1c 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #e57373 0%,#b71c1c 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  #e57373 0%,#b71c1c 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e57373', endColorstr='#b71c1c',GradientType=0 ); /* IE6-9 */
+    border: 1px solid white;
+    font-family: "Book Antiqua", sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 14px;
+    border: 1px solid #F34235;
+    color: white;
+    text-shadow: 0 -1px 0 rgba(0,0,0, 0.50);
+}
+
+popup .icon-close {
+    opacity: 0.50;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 16px;
+    color: black;
+} popup .icon-close:hover {
+    opacity: 1;
+}
+
+popup .fa-times {
+    opacity: 0.50;
+    color: black;
+} popup .fa-times:hover {
+    opacity: 1;
+}

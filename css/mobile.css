@@ -1,0 +1,207 @@
+@media only screen and (max-width: 768px) {
+    
+    wrapper {
+        width: 320px;
+    }
+    
+    column {
+        margin-top: 16px;
+        margin-bottom: 16px;
+    }
+    
+    popup {
+        -webkit-transform: translateX(-50%) translateY(-50%);
+        -moz-transform: translateX(-50%) translateY(-50%);
+        -ms-transform: translateX(-50%) translateY(-50%);
+        -o-transform: translateX(-50%) translateY(-50%);
+        transform: translateX(-50%) translateY(-50%);
+    }
+    
+    .column-5,
+    .column-6,
+    .column-7,
+    .column-8,
+    .column-9,
+    .column-10,
+    .column-11,
+    .column-12 {
+        width: 100%;
+    }
+    
+    .mobile-hidden {
+        display: none;
+    }
+    
+    .mobile-only {
+        display: block;
+    }
+    
+    
+    
+    
+    
+    logo {
+        background-size: 100%;
+        background-position: center left;
+    }
+
+    #header-mobile {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 9;
+        height: 138px;
+        padding: 0;
+        background: #F9F9F9;
+        -webkit-transition: all 0.2s ease-in-out;
+        -moz-transition: all 0.2s ease-in-out;
+        -ms-transition: all 0.2s ease-in-out;
+        -o-transition: all 0.2s ease-in-out;
+        transition: all 0.2s ease-in-out;
+    } #header-mobile:before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 48px;
+        width: 100%;
+        background: url("../img/border-top.png");
+        box-shadow: 0 2px 9px 0 rgba(0,0,0, 0.25);
+    } #header-mobile.minimized {
+        top: -76px;
+    }
+    
+    #header-mobile .column-1 {
+        margin: 0;
+    }
+
+    #header-mobile a[href^="tel:"] {
+        font-family: "Trajan", serif;
+        text-transform: none;
+        font-weight: 700;
+    }
+
+    #header-mobile a.cta {
+        margin-top: 4px;
+        font-size: 14px;
+        text-decoration: none;
+    }
+
+    #header-mobile nav {
+        margin-top: -8px;
+        position: relative;
+        z-index: 10;
+    }
+
+    #header-mobile nav a {
+        margin: 0 8px;
+        font-family: "Trajan", serif;
+        font-weight: 700;
+        font-size: 12px;
+        color: rgba(0,0,0, 0.75);
+    }
+    
+    
+    
+    
+    
+    #main {
+        
+    }
+    
+    #main wrapper {
+        width: 100%;
+    }
+    
+    
+    
+    
+    
+    #badges {
+        
+    }
+    
+    #badges column {
+        width: 100%;
+    }
+    
+    
+    
+    
+    
+    #works {
+        
+    }
+    
+    .work {
+        height: 186px;
+    } .work:after {
+        background-size: 90%;
+    }
+    
+    #works h2 {
+        opacity: 1;
+        color: black;
+        top: -116px;
+        font-size: 14px;
+    }
+    
+    
+    
+    
+    
+    #offer-credit {
+        background: url("../img/background/offer.jpg") center center no-repeat;
+        background-size: cover;
+    }
+    
+    
+    
+    
+    
+    #plan {
+        
+    }
+    
+    #plan column {
+        width: 100%;
+    }
+    
+    
+    
+    
+    
+    #offer-wedding {
+        background: url("../img/background/offer.jpg") center center no-repeat;
+        background-size: cover;
+    }
+    
+    
+    
+    
+    
+    #clients {
+        
+    }
+    
+    #clients .column-3 {
+        margin: 0;
+        padding: 0;
+        height: 160px;
+        width: 160px;
+    }
+    
+    #clients .client {
+        background-size: 60%;
+    }
+    
+    
+    
+    
+    
+    popup column:first-of-type {
+        display: none;
+    }
+    
+}

@@ -22,7 +22,7 @@
 
         <!--script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script-->
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
-        
+
         <link rel="stylesheet" href="fancybox/source/jquery.fancybox.css?v=2.1.5" type="text/css" media="screen"/>
         <script type="text/javascript" src="fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
@@ -35,10 +35,10 @@
         <script type="text/javascript" src="fancybox/source/helpers/jquery.fancybox-thumbs.js?v=1.0.7"></script>
 
         <script src="js/vendor/modernizr-2.8.3.min.js"></script>
-        
+
 		<script src="js/referer.js"></script>
-        
-        <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.js"></script>
+
+        <script src="js/jquery.validate.js"></script>
         <script>
             $().ready(function() {
                 $('form').each(function() {
@@ -75,7 +75,7 @@
                 });
             });
         </script>
-        
+
         <script>
             function popup(id, trigger) {
                 $('popup input[name="trigger"]').val(trigger);
@@ -95,7 +95,7 @@
             }
         </script>
         <script>
-            function scrollTo(elem) {
+            function scrollToId(elem) {
                 if(document.getElementById(elem)) {
                     var destination = jQuery('#'+elem).offset().top-69;
                     jQuery("html,body").animate({scrollTop: destination}, 800);
@@ -163,19 +163,19 @@
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-        
+
         <main>
             <section id="header" class="mobile-hidden">
                 <wrapper>
                     <column class="column-3">
                         <div id="logo-bg" class="smooth">
-                            <logo onclick="scrollTo('main')"></logo>
+                            <logo onclick="scrollToId('main')"></logo>
                         </div>
                     </column><column class="column-6 text-center">
                         <nav>
-                            <a onclick="scrollTo('works')">Наши Работы</a>
-                            <a onclick="scrollTo('comments')">Отзывы</a>
-                            <a onclick="scrollTo('certificates')">Сертификаты</a>
+                            <a onclick="scrollToId('works')">Наши Работы</a>
+                            <a onclick="scrollToId('comments')">Отзывы</a>
+                            <a onclick="scrollToId('certificates')">Сертификаты</a>
                         </nav>
                     </column><column id="phones" class="column-3 text-right middle">
                         <i class="fa fa-phone"></i>
@@ -185,7 +185,7 @@
                     </column>
                 </wrapper>
             </section>
-            
+
             <section id="header-mobile" class="text-center mobile-only">
                     <column class="column-1">
                         <logo></logo>
@@ -197,13 +197,13 @@
                     </column>
                     <column class="column-6 text-center">
                         <nav>
-                            <a onclick="scrollTo('works')">Наши Работы</a>
-                            <a onclick="scrollTo('comments')">Отзывы</a>
-                            <a onclick="scrollTo('certificates')">Сертификаты</a>
+                            <a onclick="scrollToId('works')">Наши Работы</a>
+                            <a onclick="scrollToId('comments')">Отзывы</a>
+                            <a onclick="scrollToId('certificates')">Сертификаты</a>
                         </nav>
                     </column>
             </section>
-            
+
             <section id="main" class="border-bottom">
                 <wrapper class="text-center">
                     <!--h1><span>К</span>ухни с <span>И</span>ндивидуальным <span>Д</span>изайном</h1>
@@ -216,7 +216,7 @@
                 </wrapper>
                 <img id="hand" src="img/hand.png" class="mobile-hidden">
             </section>
-            
+
             <section id="badges" class="">
                 <wrapper>
                     <column class="column-3 text-center animated from-bottom">
@@ -246,13 +246,13 @@
                     </column>
                 </wrapper>
             </section>
-            
+
             <section id="pros" class="hidden">
                 <wrapper>
-                
+
                 </wrapper>
             </section>
-            
+
             <section id="works" class="">
                 <wrapper class="text-center">
                     <h4 class="animated"><span>Ч</span>то мы можем?</h4>
@@ -294,7 +294,7 @@
                     </column>
                 </wrapper>
             </section>
-            
+
             <section id="offer-credit" class="dark border-top border-bottom">
                 <wrapper class="text-center">
                     <h2 class="animated">
@@ -306,13 +306,13 @@
                     </column>
                 </wrapper>
             </section>
-            
+
             <section id="plan" class="">
                 <wrapper class="text-center">
                     <h4 class="animated"><span>К</span>ак мы работаем?</h4>
                     <h3 class="animated"><span>С</span>хема <span>Р</span>аботы</h3>
                 </wrapper>
-                
+
                 <wrapper>
                     <column class="column-3 text-center animated from-bottom">
                         <margin>
@@ -338,7 +338,7 @@
                     </column>
                 </wrapper>
             </section>
-            
+
             <!--section id="letters" class="">
                 <wrapper class="text-center">
                     <h4 class="animated"><span>Ч</span>то о нас говорят?</h4>
@@ -375,7 +375,7 @@
                     </column>
                 </wrapper>
             </section-->
-            
+
             <section id="comments" class="">
                 <wrapper class="text-center">
                     <h4 class="animated"><span>Ч</span>то о нас говорят?</h4>
@@ -437,7 +437,7 @@
                     </column>
                 </wrapper>
             </section>
-            
+
             <section id="offer-wedding" class="dark border-top border-bottom">
                 <wrapper>
                     <column class="column-8 text-center">
@@ -455,7 +455,7 @@
                     <img class="right animated from-right mobile-hidden" src="img/offer-wedding.png">
                 </wrapper>
             </section>
-            
+
             <section id="certificates" class="">
                 <wrapper class="text-center">
                     <h4 class="animated"><span>В</span>сё ещё сомневаетесь?</h4>
@@ -485,7 +485,7 @@
                     </column>
                 </wrapper-->
             </section>
-            
+
             <!--section id="tradein" class="dark border-top border-bottom">
                 <wrapper class="text-center">
                     <h2 class="animated"><span>М</span>ебельный <span>T</span>rade<span>I</span>n</h2>
@@ -525,7 +525,7 @@
                     </column>
                 </wrapper>
             </section-->
-            
+
             <section id="clients" class="">
                 <wrapper class="text-center">
                     <h4 class="animated"><span>С</span> кем мы работаем?</h4>
@@ -551,21 +551,21 @@
                     </column>
                 </wrapper>
             </section>
-            
+
             <section id="map" class="hidden">
                 <script type="text/javascript" charset="utf-8" src="https://api-maps.yandex.ru/services/constructor/1.0/js/?sid=bOUu6DhbmzfaqUcdVVgxwSSAnxx_GvdY&width=100%&height=500&lang=ru_RU&sourceType=constructor"></script>
             </section>
-            
+
             <section id="footer" class="border-top">
                 <wrapper>
                     <column class="column-4 middle navigation">
                         <margin>
                             <small>
-                                <a onclick="scrollTo('main')">Главная</a>
-                                <a onclick="scrollTo('works')">Наши работы</a>
-                                <a onclick="scrollTo('plan')">Схема работы</a>
-                                <a onclick="scrollTo('letters')">Отзывы клиентов</a>
-                                <a onclick="scrollTo('certificates')">Наши сертификаты</a>
+                                <a onclick="scrollToId('main')">Главная</a>
+                                <a onclick="scrollToId('works')">Наши работы</a>
+                                <a onclick="scrollToId('plan')">Схема работы</a>
+                                <a onclick="scrollToId('letters')">Отзывы клиентов</a>
+                                <a onclick="scrollToId('certificates')">Наши сертификаты</a>
                             </small>
                         </margin>
                     </column><column class="column-4 text-center middle">
@@ -604,9 +604,9 @@
                 </wrapper>
             </section>
         </main>
-        
+
         <fade class="hidden" onclick="popdown()"></fade>
-        
+
         <popup id="popup_main" class="hidden">
             <column class="column-4">
             </column><column class="column-4">
@@ -642,48 +642,6 @@
 
         <script src="js/main.js"></script>
         <script src="js/animate.js"></script>
-      
-      
-        <script>
-          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-          ga('create', 'UA-69140721-1', 'auto');
-          ga('send', 'pageview');
-
-        </script>
-        
-        <!-- Yandex.Metrika counter -->
-        <!--script type="text/javascript">
-            (function (d, w, c) {
-                (w[c] = w[c] || []).push(function() {
-                    try {
-                        w.yaCounter32769805 = new Ya.Metrika({
-                            id:32769805,
-                            clickmap:true,
-                            trackLinks:true,
-                            accurateTrackBounce:true,
-                            webvisor:true
-                        });
-                    } catch(e) { }
-                });
-
-                var n = d.getElementsByTagName("script")[0],
-                    s = d.createElement("script"),
-                    f = function () { n.parentNode.insertBefore(s, n); };
-                s.type = "text/javascript";
-                s.async = true;
-                s.src = "https://mc.yandex.ru/metrika/watch.js";
-
-                if (w.opera == "[object Opera]") {
-                    d.addEventListener("DOMContentLoaded", f, false);
-                } else { f(); }
-            })(document, window, "yandex_metrika_callbacks");
-        </script>
-        <noscript><div><img src="https://mc.yandex.ru/watch/32769805" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-        <!-- /Yandex.Metrika counter -->
-        
     </body>
 </html>

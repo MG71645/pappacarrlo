@@ -1,7 +1,7 @@
 @font-face {
   font-family: 'MaterialDesignIcons';
   src: url("../icons/icons.eot?v=1.0.08");
-  src: url("../icons/icons.eot?#iefix&v=1.0.08") format("embedded-opentype"), url("/icons/icons.woff2") format("woff2"), url("../icons/icons.woff") format("woff"), url("../icons/icons.ttf") format("truetype"), url("../icons/icons.svg?v=1.0.08#materialdesigniconsregular") format("svg");
+  src: url("../icons/icons.eot?#iefix&v=1.0.08") format("embedded-opentype"), url("../icons/icons.woff2") format("woff2"), url("../icons/icons.woff") format("woff"), url("../icons/icons.ttf") format("truetype"), url("../icons/icons.svg?v=1.0.08#materialdesigniconsregular") format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -4046,5 +4046,3 @@ icon {
 .icon-zip-box::before {
   content: "\f4f0";
 }
-
-/*# sourceMappingURL=materialdesignicons.css.map */
